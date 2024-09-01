@@ -28,7 +28,7 @@ const userSchema = mongoose.Schema({
         type: Boolean,
         default: false,
     },
-    device: [
+    devices: [
         {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'device',
