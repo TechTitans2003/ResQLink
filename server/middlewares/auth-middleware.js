@@ -25,12 +25,14 @@ const authMiddleware = async (req, res, next) => {
 
         next();
     } catch (error) {
-        console.error(error);
-        return res.status(500)
-            .json({
-                message: "Internal Server Error Cannot Verify User",
-                error,
-            });
+        // console.error(error);
+        const err = {
+            status: 500,
+            message: "Internal Server Error Cannot Verify User",
+            discription: error,
+        };
+
+        next(err);
     }
 }
 

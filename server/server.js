@@ -6,6 +6,7 @@ const authRouter = require('./routes/auth-route');
 const deviceRouter = require('./routes/device-route');
 const adminRouter = require('./routes/admin-route');
 const contactRouter = require('./routes/contact-route');
+const errorMiddleware = require('./middlewares/error-middleware');
 
 const app = express();
 
@@ -15,6 +16,8 @@ app.use('/api/auth', authRouter);
 app.use('/api/device', deviceRouter);
 app.use('/api/admin', adminRouter);
 app.use('/api/contact', contactRouter);
+
+app.use(errorMiddleware)
 
 app.get("/", (req, res) => {
     res.send("Hello, We Welcome You Here");

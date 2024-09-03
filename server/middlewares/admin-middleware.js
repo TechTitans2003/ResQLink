@@ -8,12 +8,14 @@ const adminMiddleware = async (req, res, next) => {
         next();
 
     } catch (error) {
-        console.error(error);
-        return res.status(500)
-            .json({
-                message: "Internal Server Error Admin is Not Verified",
-                error,
-            })
+        // console.error(error);
+        const err = {
+            status: 500,
+            message: "Internal Server Error Admin is Not Verified",
+            discription: error,
+        };
+
+        next(err);
     }
 }
 

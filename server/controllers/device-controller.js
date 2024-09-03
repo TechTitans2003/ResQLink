@@ -45,12 +45,14 @@ const addDevice = async (req, res) => {
             })
 
     } catch (error) {
-        console.error(error);
-        return res.status(500)
-            .json({
-                message: "Internal Server Error Cannot Add Device",
-                error
-            })
+        // console.error(error);
+        const err = {
+            status: 500,
+            message: "Internal Server Error Cannot Add Device",
+            discription: error,
+        };
+
+        next(err);
     }
 }
 
@@ -78,12 +80,14 @@ const editDevice = async (req, res) => {
             })
 
     } catch (error) {
-        console.error(error);
-        return res.status(500)
-            .json({
-                message: "Internal Server Error Cannot Update Device Info",
-                error
-            });
+        // console.error(error);
+        const err = {
+            status: 500,
+            message: "Internal Server Error Cannot Update Device Info",
+            discription: error,
+        };
+
+        next(err);
     }
 }
 
@@ -118,12 +122,14 @@ const deleteDevice = async (req, res) => {
         })
 
     } catch (error) {
-        console.error(error);
-        return res.status(500)
-            .json({
-                message: "Internal Server Error Cannot Delete Device",
-                error,
-            })
+        // console.error(error);
+        const err = {
+            status: 500,
+            message: "Internal Server Error Cannot Delete Device",
+            discription: error,
+        };
+
+        next(err);
     }
 }
 
@@ -153,12 +159,14 @@ const getDeviceInfo = async (req, res) => {
             })
 
     } catch (error) {
-        console.error(error);
-        return res.status(500)
-            .json({
-                message: "Internal Sever Error Cannot Get Device Info",
-                error,
-            })
+        // console.error(error);
+        const err = {
+            status: 500,
+            message: "Internal Server Error Cannot Get Device Info",
+            discription: error,
+        };
+
+        next(err);
     }
 }
 

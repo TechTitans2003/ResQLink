@@ -30,12 +30,14 @@ const adminLogin = async (req, res) => {
         })
 
     } catch (error) {
-        console.error(error);
-        return res.status(500)
-            .json({
-                message: "Internal Server Error Cannot Login Admin",
-                error
-            })
+        // console.error(error);
+        const err = {
+            status: 500,
+            message: "Internal Server Error Cannot Login Admin",
+            discription: error,
+        };
+
+        next(err);
     }
 }
 
@@ -47,11 +49,14 @@ const getAllUsers = async (req, res) => {
             .json({ message: "All Users Fetched Successfully", users })
 
     } catch (error) {
-        console.error(error);
-        return res.status(500).json({
-            message: "Internal Server Error Cannot Get All Users",
-            error,
-        })
+        // console.error(error);
+        const err = {
+            status: 500,
+            message: "Internal Server Error Cannot Get All User",
+            discription: error,
+        };
+
+        next(err);
     }
 }
 
@@ -72,12 +77,14 @@ const getSingleUser = async (req, res) => {
             .json({ message: "User Data Fetched", user, devices })
 
     } catch (error) {
-        console.error(error);
-        return res.status(500)
-            .json({
-                message: "Internal Server Error Cannot Get This User",
-                error,
-            })
+        // console.error(error);
+        const err = {
+            status: 500,
+            message: "Internal Server Error Cannot Get This User",
+            discription: error,
+        };
+
+        next(err);
     }
 }
 
@@ -97,12 +104,14 @@ const removeUser = async (req, res) => {
             .json({ message: "User Deleted Successfully" });
 
     } catch (error) {
-        console.error(error);
-        return res.status(500)
-            .json({
-                message: "Internal Server Error Cannot Delete User",
-                error,
-            })
+        // console.error(error);
+        const err = {
+            status: 500,
+            message: "Internal Server Error Cannot Delete User",
+            discription: error,
+        };
+
+        next(err);
     }
 }
 
@@ -114,11 +123,14 @@ const getAllDevices = async (req, res) => {
             .json({ message: "All Device Fetched Successfully", devices })
 
     } catch (error) {
-        console.error(error);
-        return res.status(500).json({
+        // console.error(error);
+        const err = {
+            status: 500,
             message: "Internal Server Error Cannot Get All Device",
-            error,
-        })
+            discription: error,
+        };
+
+        next(err);
     }
 }
 
@@ -137,12 +149,14 @@ const getSingleDevice = async (req, res) => {
             .json({ message: "Device Data Fetched Successfully", device, })
 
     } catch (error) {
-        console.error(error);
-        return res.status(500)
-            .json({
-                message: "Internal Server Error Cannot Locate The Device",
-                error,
-            })
+        // console.error(error);
+        const err = {
+            status: 500,
+            message: "Internal Server Error Cannot Locate The Device",
+            discription: error,
+        };
+
+        next(err);
     }
 }
 
@@ -162,12 +176,14 @@ const removeDevice = async (req, res) => {
             .json({ message: "Device Deleted Successfully" });
 
     } catch (error) {
-        console.error(error);
-        return res.status(500)
-            .json({
-                message: "Internal Server Error Cannot Delete Device",
-                error,
-            })
+        // console.error(error);
+        const err = {
+            status: 500,
+            message: "Internal Server Error Cannot Delete Device",
+            discription: error,
+        };
+
+        next(err);
     }
 }
 

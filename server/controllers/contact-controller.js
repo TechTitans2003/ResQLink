@@ -15,9 +15,14 @@ const sendMsg = async (req, res) => {
             .json({ message: `${username}, Your message is sent to Admin` });
 
     } catch (error) {
-        console.error(error);
-        return res.status(500)
-            .json({ message: "Internal Server Error Cannot Send Message", });
+        // console.log(error);
+        const err = {
+            status: 500,
+            message: "Internal Server Error Cannot Send Message",
+            discription: error,
+        };
+
+        next(err);
     }
 }
 
@@ -37,12 +42,14 @@ const getAllMsg = async (req, res) => {
             })
 
     } catch (error) {
-        console.error(error);
-        return res.status(500)
-            .json({
-                message: "Internal Server Error Cannot Get Messages",
-                error
-            });
+        // console.error(error);
+        const err = {
+            status: 500,
+            message: "Internal Server Error Cannot Get Messages",
+            discription: error,
+        };
+
+        next(err);
     }
 }
 
@@ -62,9 +69,14 @@ const deleteMsg = async (req, res) => {
             .json({ message: "Message Deleted Successfully" });
 
     } catch (error) {
-        console.error(error);
-        return res.status(500)
-            .json({ message: "Internal Server Error Cannot Delete Message" });
+        // console.error(error);
+        const err = {
+            status: 500,
+            message: "Internal Server Error Cannot Delete Message User",
+            discription: error,
+        };
+
+        next(err);
     }
 }
 

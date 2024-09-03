@@ -7,6 +7,8 @@ const {
     getDeviceForSingleUser
 } = require('../controllers/auth-controller');
 const authMiddleware = require('../middlewares/auth-middleware');
+const validate = require('../middlewares/validator-middleware');
+const { signupSchema, loginSchema } = require('../validators/auth-validator');
 
 const router = express.Router();
 
@@ -15,9 +17,9 @@ router.route('/').get((req, res) => {
     res.send("Welcome To Auth API");
 })
 
-router.route('/register').post(createUser);
+router.route('/register').post(validate(signupSchema), createUser);
 
-router.route('/login').post(loginUser);
+router.route('/login').post(validate(loginSchema), loginUser);
 
 router.route('/user/update').patch(authMiddleware, updateUser);
 

@@ -26,9 +26,14 @@ const createUser = async (req, res) => {
         })
 
     } catch (error) {
-        console.error(error);
-        return res.status(500)
-            .json({ message: 'Server Error Cannot Login', error });
+        // console.error(error);
+        const err = {
+            status: 500,
+            message: "Internal Server Error Cannot Register User",
+            discription: error,
+        };
+
+        next(err);
     }
 }
 
@@ -40,7 +45,7 @@ const loginUser = async (req, res) => {
         // Checking Whether User Exist Or Not
         const userExist = await User.findOne({ email });
         if (!userExist) {
-            return res.status(400)
+            return res.status(404)
                 .json({ message: "User Not Found" });
         }
 
@@ -58,12 +63,14 @@ const loginUser = async (req, res) => {
             });
 
     } catch (error) {
-        console.log(error);
-        return res.status(500)
-            .json({
-                message: "Internal Server Error Cannot Login User",
-                error,
-            })
+        // console.log(error);
+        const err = {
+            status: 500,
+            message: "Internal Server Error Cannot Login User",
+            discription: error,
+        };
+
+        next(err);
     }
 }
 
@@ -100,12 +107,14 @@ const updateUser = async (req, res) => {
             user,
         });
     } catch (error) {
-        console.error(error);
-        return res.status(500)
-            .json({
-                message: "Internal Server Error Cannot Update User",
-                error,
-            });
+        // console.error(error);
+        const err = {
+            status: 500,
+            message: "Internal Server Error Cannot Update User",
+            discription: error,
+        };
+
+        next(err);
     }
 }
 
@@ -127,12 +136,14 @@ const getUser = async (req, res) => {
             })
 
     } catch (error) {
-        console.error(error);
-        return res.status(500)
-            .json({
-                message: "Internal Server Error Cannot Get User",
-                error,
-            })
+        // console.error(error);
+        const err = {
+            status: 500,
+            message: "Internal Server Error Cannot Get User",
+            discription: error,
+        };
+
+        next(err);
     }
 }
 
@@ -154,12 +165,14 @@ const getDeviceForSingleUser = async (req, res) => {
                 devices,
             });
     } catch (error) {
-        console.error(error);
-        return res.status(500)
-            .json({
-                message: "Internal Server Error Cannot Get Device List",
-                error,
-            })
+        // console.error(error);
+        const err = {
+            status: 500,
+            message: "Internal Server Error Cannot Get Device List",
+            discription: error,
+        };
+
+        next(err);
     }
 }
 
