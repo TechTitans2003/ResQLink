@@ -136,10 +136,14 @@ const getDeviceInfo = async (req, res) => {
         const device = await Device.findById(deviceId).populate('user');
         if (!device) {
             return res.status(404)
-                .json({message: "Device Not Found"});
+                .json({ message: "Device Not Found" });
         }
 
         const user = await device.user;
+        if (user._id.toString() !== userId) {
+            return res.status(403)
+                .json({ message: "User Not Authorized To View This Device" });
+        }
 
         return res.status(200)
             .json({
@@ -158,4 +162,9 @@ const getDeviceInfo = async (req, res) => {
     }
 }
 
-module.exports = { addDevice, editDevice, deleteDevice, getDeviceInfo };
+module.exports = {
+    addDevice,
+    editDevice,
+    deleteDevice,
+    getDeviceInfo
+};

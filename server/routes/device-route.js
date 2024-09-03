@@ -1,5 +1,5 @@
 const express = require('express');
-const authmiddleware = require('../middlewares/auth-middleware');
+const authMiddleware = require('../middlewares/auth-middleware');
 const {
     addDevice,
     editDevice,
@@ -13,13 +13,13 @@ router.route("/").get((req, res) => {
     res.send("Welcome To Device API");
 })
 
-router.route("/new").post(authmiddleware, addDevice);
+router.route("/new").post(authMiddleware, addDevice);
 
-router.route("/:id/edit").patch(authmiddleware, editDevice);
+router.route("/:id/edit").patch(authMiddleware, editDevice);
 
-router.route("/:id/delete").delete(authmiddleware, deleteDevice);
+router.route("/:id/delete").delete(authMiddleware, deleteDevice);
 
-router.route("/:id/info").get(authmiddleware, getDeviceInfo);
+router.route("/:id/info").get(authMiddleware, getDeviceInfo);
 
 
 module.exports = router;

@@ -164,4 +164,10 @@ const getDeviceForSingleUser = async (req, res) => {
 }
 
 
-module.exports = { createUser, loginUser, updateUser, getUser, getDeviceForSingleUser };
+module.exports = {
+    createUser,
+    loginUser,
+    updateUser,
+    getUser,
+    getDeviceForSingleUser
+};

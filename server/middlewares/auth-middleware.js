@@ -1,7 +1,7 @@
 const jwt = require("jsonwebtoken");
 const User = require("../models/user-model");
 
-const authmiddleware = async (req, res, next) => {
+const authMiddleware = async (req, res, next) => {
     const authToken = req.header("Authorization");
     if (!authToken) {
         return res.status(400)
@@ -21,6 +21,7 @@ const authmiddleware = async (req, res, next) => {
         req.user = user;
         req.token = token;
         req.userId = isVerified.userId;
+        req.admin = isVerified.isAdmin;
 
         next();
     } catch (error) {
@@ -34,4 +35,4 @@ const authmiddleware = async (req, res, next) => {
 }
 
 
-module.exports = authmiddleware;
+module.exports = authMiddleware;

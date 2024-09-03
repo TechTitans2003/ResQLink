@@ -4,6 +4,7 @@ const connectDb = require('./db/db');
 
 const authRouter = require('./routes/auth-route');
 const deviceRouter = require('./routes/device-route');
+const adminRouter = require('./routes/admin-route');
 
 const app = express();
 
@@ -11,6 +12,7 @@ const app = express();
 app.use(express.json());
 app.use('/api/auth', authRouter);
 app.use('/api/device', deviceRouter);
+app.use('/api/admin', adminRouter);
 
 app.get("/", (req, res) => {
     res.send("Hello, We Welcome You Here");
