@@ -21,6 +21,7 @@ const createUser = async (req, res) => {
 
         return res.status(201).json({
             message: 'User Created Successfully',
+            token: user.generateToken(),
             user,
         })
 
@@ -53,7 +54,7 @@ const loginUser = async (req, res) => {
             .json({
                 message: "User Login Succesfull",
                 token: userExist.generateToken(),
-                userIdd: userExist._id,
+                userId: userExist._id,
             });
 
     } catch (error) {
