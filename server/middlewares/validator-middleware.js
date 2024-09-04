@@ -1,4 +1,4 @@
-const validate = (schema) => async (req, res, next) => {
+const validate = (schema) => async (req, res, next) => {    
     try {
 
         const parsedBody = await schema.parseAsync(req.body);
@@ -6,6 +6,8 @@ const validate = (schema) => async (req, res, next) => {
         next();
 
     } catch (error) {
+        // console.error(error);
+        
         // const err = error.errors[0].message;
         // console.error(err);
         // return res.status(500)

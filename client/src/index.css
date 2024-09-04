@@ -1,68 +1,105 @@
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+li {
+    list-style: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    color: var(--black);
 }
 
 a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
+    text-decoration: none;
+
 }
-a:hover {
-  color: #535bf2;
+
+:root {
+    --black: #333;
+    --white: #FFF;
+    --light: #F5F5F5;
+    --grey: #AAA;
+    --dark: #1B1C30;
+    --dark-l-1: #262848;
+    --dark-l-2: #545679;
+    --green: #47BE7D;
+    --red: #D9214E;
+    --blue: #009EF7;
+}
+
+i[class^="ph"] {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+    background: var(--light);
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+
+
+
+/* start: BREAKPOINTS */
+@media screen and (max-width: 576px) {
+	#sidebar-mobile {
+		display: flex;
+	}
+
+
+
+
+
+
+
+
+	#sidebar {
+		left: -5rem;
+	}
+
+	#sidebar.active {
+		left: 0;
+	}
+
+	#sidebar.active+.sidebar-overlay {
+		display: block;
+	}
+
+
+
+
+
+
+
+	#main {
+		position: relative;
+		left: 0;
+		width: 100%;
+	}
+
+	#main .main__top .main__top__menu .main__dropdown {
+		position: fixed;
+		top: 7.5rem;
+		right: 1.25rem;
+		left: 1.25rem;
+		width: unset;
+	}
+
+	#main .main__body__data>div {
+		flex: 1 0 0;
+	}
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
-}
+/* end: BREAKPOINTS */

@@ -1,9 +1,9 @@
 const User = require("../models/user-model");
 
 // Creating New User+
-const createUser = async (req, res) => {
+const createUser = async (req, res, next) => {
     try {
-        const { name, username, email, phone, password } = req.body;
+        const { username, email, phone, password } = req.body;
 
         const userExist = await User.findOne({ email });
         if (userExist) {
@@ -12,7 +12,6 @@ const createUser = async (req, res) => {
         }
 
         const user = await User.create({
-            name,
             username,
             email,
             phone,
@@ -26,7 +25,7 @@ const createUser = async (req, res) => {
         })
 
     } catch (error) {
-        // console.error(error);
+        console.error(error);
         const err = {
             status: 500,
             message: "Internal Server Error Cannot Register User",
