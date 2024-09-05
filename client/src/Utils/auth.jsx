@@ -12,9 +12,18 @@ export const AuthProvider = ({ children }) => {
     // user state variable
     const [user, setUser] = useState({});
 
+    // devices state variable
+    const [devices, setDevices] = useState([]);
+
+    // insight state variable
+    const [insight, setInsight] = useState({
+        devices: 0,
+        location: 0,
+        "active-devices": 0,
+    });
+
     // loading state variable
     const [isLoading, setIsLoading] = useState(true);
-
 
     // setting token in LS
     const setTokenInLS = (token) => {
@@ -31,6 +40,7 @@ export const AuthProvider = ({ children }) => {
     // getting user data
     const getUser = async () => {
         const url = `${API}/api/auth/user/info`;
+
         try {
             setIsLoading(true);
             if (token !== null) {
@@ -60,9 +70,60 @@ export const AuthProvider = ({ children }) => {
 
     }
 
+
+    // getting device data
+    const getUserDevice = async () => {
+        const url = `${API}/api/auth/user/device`;
+
+        try {
+            if (token !== null) {
+                const response = await fetch(url, {
+                    method: "GET",
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    }
+                });
+
+                const resdata = await response.json();
+
+                if (response.ok) {
+                    const devices = await resdata.devices;
+                    // console.log(userData);
+                    setDevices(devices)
+                }
+            }
+
+        } catch (error) {
+            console.log(`device data error`, error);
+        }
+
+    }
+
     useEffect(() => {
         getUser();
     }, [token])
+
+
+    useEffect(() => {
+        if (token) {
+            getUserDevice();
+        }
+    }, [user]);
+
+    useEffect(() => {
+        if (devices.length >= 0) {
+            const activeDeviceCount = devices.filter(device => device.isActive).length;
+            setInsight(prevInsight => ({
+                ...prevInsight,
+                devices: devices.length,
+                location: devices.length,
+                'active-devices': activeDeviceCount,
+            }));
+        }
+        // console.log(insight);
+        
+    }, [devices]);
+    
 
     let isLoggedIn = !!token;
 
@@ -71,6 +132,9 @@ export const AuthProvider = ({ children }) => {
         token,
         isLoggedIn,
         user,
+        insight,
+        devices,
+        getUserDevice,
         setTokenInLS,
         getUser,
         logoutUser,

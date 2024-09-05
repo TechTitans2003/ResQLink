@@ -13,7 +13,9 @@ import DeviceDetails from './Components/Admin/DeviceDetails/DeviceDetails';
 
 function App() {
 
-    const { isLoggedIn } = useAuth();
+    const { isLoggedIn, devices } = useAuth();
+    
+    
 
     return (
         <>

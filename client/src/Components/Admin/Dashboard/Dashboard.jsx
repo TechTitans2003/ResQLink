@@ -1,9 +1,13 @@
+import { useAuth } from '../../../Utils/auth';
 import AddDevice from '../AddDevice/AddDevice';
 import DeviceList from '../DeviceList/DeviceList';
 
 import './Dashboard.css';
 
 export default function Dashboard() {
+
+    const { devices } = useAuth();
+
     return (
         <>
             <div className="members">
@@ -12,7 +16,12 @@ export default function Dashboard() {
                 </div>
                 <AddDevice />
                 <ul className="members__user">
-                    <DeviceList />
+                    {
+                        devices.map((device,index)=>{
+                            const {name, rssi } = device;
+                            return <DeviceList name={name} rssi={rssi} key={index} />
+                        })
+                    }
                 </ul>
             </div>
             <div className="members">
@@ -31,7 +40,15 @@ export default function Dashboard() {
                     </div>
                 </div>
                 <ul className="members__user">
-                    <DeviceList />
+                {
+                        devices.map((device,index)=>{
+                            const {name, rssi, isActive } = device;
+                            if (!isActive) {
+                                return null;
+                            }
+                            return <DeviceList name={name} rssi={rssi} key={index} />
+                        })
+                    }
                 </ul>
             </div>
         </>

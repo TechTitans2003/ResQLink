@@ -31,7 +31,7 @@
     border: 1px solid var(--lt-color-gray-500);
 }
 
-.device__form form button {
+.device__form form .button {
     background: var(--green);
     color: var(--light);
     outline: none;
