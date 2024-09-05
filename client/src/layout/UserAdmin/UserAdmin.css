@@ -1,0 +1,6 @@
+#main .main__body .main__body__data {
+	display: flex;
+	grid-gap: 1.25rem;
+	margin-top: 1.25rem;
+	flex-wrap: wrap;
+}

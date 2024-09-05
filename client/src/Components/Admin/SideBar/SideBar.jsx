@@ -1,16 +1,21 @@
 import React, { useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
 import './SideBar.css';
 import SidebarSubmenu from '../SideBarSubMenu/SideBarSubMenu';
 
 export default function SideBar() {
     const [activeSubmenu, setActiveSubmenu] = useState(null);
-
     const navbarRef = useRef(null);
 
     const toggleNavbar = () => {
         if (navbarRef.current) {
             navbarRef.current.classList.toggle('active');
         }
+    };
+
+    // Function to handle submenu toggling
+    const toggleSubmenu = (id) => {
+        setActiveSubmenu((prevActive) => (prevActive === id ? null : id));
     };
 
     return (
@@ -20,32 +25,29 @@ export default function SideBar() {
                 <section id="sidebar-mobile" onClick={toggleNavbar}>
                     <i className="ri-close-large-line"></i>
                 </section>
-                <a href="#" className="brand">
+                <Link to="/" className="brand">
                     <i className="ri-fire-line"></i>
-                </a>
+                </Link>
 
                 <ul className="sidebar__menu">
-                    <SidebarSubmenu
-                        id="dashboard"
-                        title={<i className="ri-home-4-fill"></i>}
-                        activeSubmenu={activeSubmenu}
-                        setActiveSubmenu={setActiveSubmenu}
-                    >
-                        <li className="title">Dashboard</li>
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">Add Device</a></li>
-                    </SidebarSubmenu>
+                    {/* Home Icon as a Link */}
+                    <li>
+                        <Link to="user/dashboard" className="menu-icon-link">
+                            <i className="ri-home-4-fill"></i>
+                            <span className="hover-label">Home</span>
+                        </Link>
+                    </li>
 
+                    {/* Other Sidebar items with Submenus */}
                     <SidebarSubmenu
                         id="components"
                         title={<i className="ri-airplay-fill"></i>}
                         activeSubmenu={activeSubmenu}
                         setActiveSubmenu={setActiveSubmenu}
-                        >
+                    >
                         <li className="title">Devices</li>
-                        <li><a href="#">Alerts</a></li>
-                        <li><a href="#">Existing Device</a></li>
-                        <li><a href="#">Update Device</a></li>
+                        <li><Link to='user/device-details'>See Devices List</Link></li>
+                        <li><a href="#">Add Device</a></li>
                     </SidebarSubmenu>
 
                     <SidebarSubmenu
@@ -107,15 +109,14 @@ export default function SideBar() {
 
             {/* <!-- start: SIDEBAR OVERLAY --> */}
             <div className="sidebar-overlay"></div>
-            {/* <!-- end: SIDEBAR OVERLAY --> */}
 
             {/* <!-- start: SIDEBAR MOBILE --> */}
             <section id="sidebar-mobile" onClick={toggleNavbar}>
                 <i className="ri-menu-2-line toggle-sidebar"></i>
-                <a href="#" className="brand">
+                <Link to="/" className="brand">
                     <i className="ri-fire-line"></i>
                     Adminweb
-                </a>
+                </Link>
             </section>
             {/* <!-- end: SIDEBAR MOBILE --> */}
         </>

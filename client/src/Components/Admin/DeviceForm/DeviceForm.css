@@ -1,0 +1,68 @@
+
+/* Adjust the form fields and buttons */
+.members__form form .form-group {
+    flex: 1 1 calc(50% - 20px); /* Set form field width to 50% on larger screens */
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.members__form form .form-group label {
+    margin-bottom: 5px;
+    font-weight: 600;
+    color: var(--lt-color-gray-600); /* Ensure label visibility */
+}
+
+.members__form form .form-group input {
+    padding: 10px;
+    border: 1px solid var(--lt-color-gray-400);
+    border-radius: 10px;
+    margin-top: 5px;
+    width: 100%; /* Make the input fields take up full width */
+    box-sizing: border-box;
+    transition: border-color 0.3s ease; /* Smooth transition for hover/focus */
+}
+
+.members__form form .form-group input:focus {
+    border-color: var(--green); /* Focused state */
+}
+
+/* Adjust the buttons */
+.members__form form .form-button {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    width: 100%;
+}
+
+.members__form form .form-button button {
+    padding: 10px 20px;
+    width: 100%;
+    max-width: 150px;
+    background: var(--green);
+    border: none;
+    border-radius: 10px;
+    color: var(--light);
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Add smooth transition for hover */
+}
+
+.members__form form .form-button button:hover {
+    background-color: var(--dark-green); /* Darker color on hover */
+}
+
+/* Adjustments for smaller screens */
+@media (max-width: 768px) {
+    .members__form form .form-group {
+        flex: 1 1 100%; /* Form fields take up full width on smaller screens */
+    }
+
+    .members__form form .form-button {
+        flex-direction: column; /* Stack buttons on smaller screens */
+    }
+}

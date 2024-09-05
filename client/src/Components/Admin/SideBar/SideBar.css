@@ -210,3 +210,47 @@
 }
 
 /* end: SIDEBAR MOBILE */
+
+/* Sidebar base styles */
+.menu-item {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.menu-icon-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    text-decoration: none;
+    color: inherit;
+}
+
+.menu-icon-link i {
+    font-size: 24px;
+    transition: color 0.3s;
+}
+
+/* Hover label styles */
+.hover-label {
+    position: absolute;
+    bottom: -20px;  /* Adjust position below the icon */
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    background-color: #333;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+    font-size: 12px;
+}
+
+/* Show label on hover */
+.menu-icon-link:hover .hover-label {
+    opacity: 1;
+    visibility: visible;
+}

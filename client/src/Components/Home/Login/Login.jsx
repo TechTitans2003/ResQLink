@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../../../Utils/auth';
 
 export default function Login() {
 
-    const { API } = useAuth();
-    const URL = `${API}/api/auth/login`
+    const { API, setTokenInLS } = useAuth();
+    const URL = `${API}/api/auth/login`;
+    const navigate = useNavigate();
 
     const [signInForm, setSignInForm] = useState({
         email: '',
@@ -23,7 +25,7 @@ export default function Login() {
     // Handle form submission for sign-in form
     const handleSignInSubmit = async (e) => {
         e.preventDefault();
-        
+
         const response = await fetch(URL, {
             method: "POST",
             headers: {
@@ -35,7 +37,9 @@ export default function Login() {
         const resData = await response.json();
         console.log(resData);
         if (response.ok) {
-            console.log(resData);
+            // console.log(resData);
+            setTokenInLS(resData.token);
+            navigate('/admin/user');
         }
     };
 

@@ -48,7 +48,10 @@ i[class^="ph"] {
 body {
     background: var(--light);
 }
-
+ 
+button{
+	cursor: pointer;
+}
 
 
 
