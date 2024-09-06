@@ -1,7 +1,11 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './AddDevice.css';
 
 export default function AddDevice({ onAddDevice }) {
+
+    const navigate = useNavigate();
+
     const [deviceName, setDeviceName] = useState('');
 
     const handleInputChange = (e) => {
@@ -10,7 +14,7 @@ export default function AddDevice({ onAddDevice }) {
 
     const handleAddClick = () => {
         if (deviceName) {
-            onAddDevice(deviceName);
+            navigate(`/admin/user/device-details/list/new/${deviceName}`)
         }
     };
 

@@ -85,7 +85,7 @@ export const AuthProvider = ({ children }) => {
                 });
 
                 const resdata = await response.json();
-
+                console.log(resdata);
                 if (response.ok) {
                     const devices = await resdata.devices;
                     // console.log(userData);

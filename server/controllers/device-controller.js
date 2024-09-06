@@ -1,4 +1,4 @@
-const Device = require("../models/device.model");
+const Device = require("../models/device-model");
 const User = require("../models/user-model");
 
 // Adding Device Id to User Device Array
@@ -133,7 +133,7 @@ const deleteDevice = async (req, res) => {
     }
 }
 
-const getDeviceInfo = async (req, res) => {
+const getDeviceInfo = async (req, res, next) => {
     const userId = req.userId;
     const deviceId = req.params.id;
 
@@ -159,7 +159,7 @@ const getDeviceInfo = async (req, res) => {
             })
 
     } catch (error) {
-        // console.error(error);
+        console.error(error);
         const err = {
             status: 500,
             message: "Internal Server Error Cannot Get Device Info",

@@ -1,16 +1,17 @@
+import { Link } from "react-router-dom"
 import { useAuth } from "../../../Utils/auth"
 
-export default function DeviceList({ name, rssi }) {
+export default function DeviceList({ name, rssi, id }) {
 
 
     return (
         <>
             <li>
                 <div className="profile">
-                    <h5>{name}</h5>
-                    <p>RSSI: {rssi}</p>
+                    <h5>RSSI: {rssi}</h5>
+                    <p>{name}</p>
                 </div>
-                <span>Explore</span>
+                <Link to={`/admin/user/device-details/list/explore/${id}`}>Explore</Link>
             </li>
         </>
     )

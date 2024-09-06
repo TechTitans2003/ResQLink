@@ -3,7 +3,7 @@ import { useAuth } from '../../../Utils/auth';
 
 export default function SignUp() {
 
-    const { API } = useAuth();
+    const { API, setTokenInLS } = useAuth();
     const URL = `${API}/api/auth/register`
 
     const [signUpForm, setSignUpForm] = useState({
@@ -36,7 +36,9 @@ export default function SignUp() {
 
         const resData = await response.json();
         if (response.ok) {
-            console.log(resData);
+            setTokenInLS(resData.token);
+            navigate('/admin/user/dashboard');
+            // console.log(resData);
         }
     };
 

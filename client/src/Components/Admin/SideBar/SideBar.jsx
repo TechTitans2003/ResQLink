@@ -47,7 +47,7 @@ export default function SideBar() {
                     >
                         <li className="title">Devices</li>
                         <li><Link to='user/device-details'>See Devices List</Link></li>
-                        <li><a href="#">Add Device</a></li>
+                        <li><Link to='user/device-details/list/new/Device-Name'>Add Device</Link></li>
                     </SidebarSubmenu>
 
                     <SidebarSubmenu

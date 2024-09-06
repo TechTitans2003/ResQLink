@@ -9,13 +9,14 @@ import { useAuth } from './Utils/auth';
 import UserAdmin from './layout/UserAdmin/UserAdmin';
 import Dashboard from './Components/Admin/Dashboard/Dashboard';
 import DeviceDetails from './Components/Admin/DeviceDetails/DeviceDetails';
+import DeviceForm from './Components/Admin/DeviceForm/DeviceForm';
 // import NewDevice from './Components/Admin/NewDevice/NewDevice';
 
 function App() {
 
     const { isLoggedIn, devices } = useAuth();
-    
-    
+
+
 
     return (
         <>
@@ -31,8 +32,10 @@ function App() {
                     } >
                         <Route path='user' element={<UserAdmin />}>
                             <Route path='dashboard' element={<Dashboard />} />
-                            <Route path='device-details' element={<DeviceDetails />} />
-                            {/* <Route path='device-new' element={<NewDevice />} /> */}
+                            <Route path='device-details' element={<DeviceDetails />} >
+                                <Route path='list/:condition/:deviceName' element={<DeviceForm />} />
+                                <Route path='list/:condition/:deviceName' element={<DeviceForm />} />
+                            </Route>
                         </Route>
                     </Route>
 

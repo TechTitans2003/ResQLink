@@ -68,16 +68,18 @@
 #main .main__body .members__user li .profile p {
 	font-size: .75rem;
 	font-weight: 500;
-	color: var(--grey);
+	/* color: var(--grey); */
+	color: var(--red);
 }
 
-#main .main__body .members__user li span {
+#main .main__body .members__user li a {
 	font-size: .75rem;
 	display: inline-block;
 	margin-left: auto;
 	padding: .25rem .75rem;
 	border-radius: 2px;
 	background: var(--light);
+	color: var(--dark-l-1);
 	font-weight: 500;
 }
 

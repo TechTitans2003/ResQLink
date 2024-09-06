@@ -1,4 +1,4 @@
-const Device = require("../models/device.model");
+const Device = require("../models/device-model");
 const User = require("../models/user-model");
 
 // Logging in Admin

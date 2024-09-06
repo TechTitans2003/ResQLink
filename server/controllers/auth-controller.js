@@ -160,7 +160,7 @@ const getDeviceForSingleUser = async (req, res) => {
 
         return res.status(200)
             .json({
-                message: "Post Fetched Succeessfully",
+                message: "Device Fetched Succeessfully",
                 devices,
             });
     } catch (error) {

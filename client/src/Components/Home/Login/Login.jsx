@@ -39,7 +39,7 @@ export default function Login() {
         if (response.ok) {
             // console.log(resData);
             setTokenInLS(resData.token);
-            navigate('/admin/user');
+            navigate('/admin/user/dashboard');
         }
     };
 

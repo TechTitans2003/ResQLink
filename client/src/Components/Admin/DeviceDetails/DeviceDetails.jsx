@@ -4,24 +4,11 @@ import DeviceForm from '../DeviceForm/DeviceForm';
 import DeviceList from '../DeviceList/DeviceList';
 import './DeviceDetails.css';
 import { useAuth } from '../../../Utils/auth';
+import { Outlet } from 'react-router-dom';
 
 export default function DeviceDetails() {
     const { devices } = useAuth();
-    const [showDeviceForm, setShowDeviceForm] = useState(false);
-    const [newDevice, setNewDevice] = useState(false);
-    const [deviceName, setDeviceName] = useState('');
     const [searchTerm, setSearchTerm] = useState('');
-
-    useEffect(() => {
-        setDeviceName('');
-        setShowDeviceForm(false);
-    }, [devices]);
-
-    const handleAddDeviceClick = (name) => {
-        setDeviceName(name);
-        setShowDeviceForm(true);
-        setNewDevice(true);
-    };
 
     const handleSearchChange = (e) => {
         setSearchTerm(e.target.value);
@@ -38,7 +25,7 @@ export default function DeviceDetails() {
                     <h4>Device List</h4>
                 </div>
                 <div className="device-box">
-                    <AddDevice onAddDevice={handleAddDeviceClick} />
+                    <AddDevice />
                     <div className="search-device">
                         <label htmlFor="search">Search Device</label>
                         <input
@@ -53,12 +40,13 @@ export default function DeviceDetails() {
                 </div>
                 <ul className="members__user">
                     {filteredDevices.map((device, index) => {
-                        const { name, rssi } = device;
-                        return <DeviceList name={name} rssi={rssi} key={index} />;
+                        const { name, rssi, _id } = device;
+                        return <DeviceList name={name} rssi={rssi} id={_id} key={index} />;
                     })}
                 </ul>
             </div>
-            {showDeviceForm && <DeviceForm deviceName={deviceName} isNew={newDevice} />}
+
+            <Outlet />
         </>
     );
 }
