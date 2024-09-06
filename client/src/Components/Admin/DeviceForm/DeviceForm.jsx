@@ -90,13 +90,16 @@ export default function DeviceForm() {
                 },
                 body: JSON.stringify(formData)
             });
-
+            const resData = await response.json();
+            console.log(resData);
+            
             if (response.ok) {
                 if (condition === 'new') {
                     alert('Device added successfully!');
                 } else {
                     alert('Device updated successfully!');
                 }
+                getDeviceInfo();
                 navigate('/admin/user/dashboard'); // Navigate to dashboard after success
             } else {
                 alert('Failed to save device.');

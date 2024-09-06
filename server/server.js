@@ -36,11 +36,11 @@ app.get("/", (req, res) => {
     res.send("Hello, We Welcome You Here");
 })
 
-const port = 2024;
-const hostname = '127.0.0.1';
+const port = 5000;
+// const hostname = '127.0.0.1';
 
 connectDb().then(() => {
-    app.listen(port, hostname, () => {
-        console.log(`Server is started at http://${hostname}:${port}`);
+    app.listen(port, () => {
+        console.log(`Server is started at http://127.0.0.1:${port}`);
     })
 });

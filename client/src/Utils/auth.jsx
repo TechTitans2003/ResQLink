@@ -4,7 +4,7 @@ export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
 
-    const API = `http://127.0.0.1:2024`;
+    const API = `http://127.0.0.1:5000`;
 
     // token state variable
     const [token, setToken] = useState(localStorage.getItem('token'));

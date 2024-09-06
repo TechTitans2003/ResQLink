@@ -2,7 +2,7 @@ const Device = require("../models/device-model");
 const User = require("../models/user-model");
 
 // Adding Device Id to User Device Array
-const addDviceToUser = async (userId, deviceId) => {
+const addDeviceToUser = async (userId, deviceId) => {
     try {
         await User.findByIdAndUpdate(
             userId,
@@ -15,46 +15,52 @@ const addDviceToUser = async (userId, deviceId) => {
 }
 
 // Adding Device To User Id 
-const addDevice = async (req, res) => {
+const addDevice = async (req, res, next) => {
     try {
         const userId = req.userId;
-        const { name } = req.body;
+        const { deviceName, latitude, longitude, userName, email, phone } = req.body;
 
-        if (!name) {
-            return res.status(204)
-                .json({ message: "Fill The Field Properly" });
+        // Check if all required fields are filled
+        if (!deviceName || !latitude || !longitude || !userName || !email || !phone) {
+            return res.status(400).json({ message: "Please fill all required fields." });
         }
 
-        const deviceExist = await Device.findOne({ name });
+        // Check if the device already exists
+        const deviceExist = await Device.findOne({ name: deviceName });
         if (deviceExist) {
-            return res.status(403)
-                .json({ message: "Device Already exist" });
+            return res.status(403).json({ message: "Device already exists." });
         }
 
+        // Create the new device
         const device = await Device.create({
-            name,
+            name: deviceName,
+            latitude,
+            longitude,
             user: userId,
-        })
+            username: userName,
+            email,
+            phone,
+        });
 
-        await addDviceToUser(userId, device._id);
+        // Add the device to the user
+        await addDeviceToUser(userId, device._id);
 
-        return res.status(201)
-            .json({
-                message: "Device Added Successfully",
-                device
-            })
+        return res.status(201).json({
+            message: "Device added successfully.",
+            device
+        });
 
     } catch (error) {
-        // console.error(error);
+        console.error(error);
         const err = {
             status: 500,
-            message: "Internal Server Error Cannot Add Device",
-            discription: error,
+            message: "Internal server error. Cannot add device.",
+            description: error.message
         };
-
         next(err);
     }
-}
+};
+
 
 // Editing Device Info
 const editDevice = async (req, res, next) => {
