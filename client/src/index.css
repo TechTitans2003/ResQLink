@@ -18,7 +18,7 @@ h4,
 h5,
 h6,
 p {
-    color: var(--black);
+    /* color: var(--black); */
 }
 
 a {
@@ -31,9 +31,9 @@ a {
     --white: #FFF;
     --light: #F5F5F5;
     --grey: #AAA;
-    --dark: #1B1C30;
-    --dark-l-1: #262848;
-    --dark-l-2: #545679;
+    --dark: #021526;
+    --dark-l-1: #03346E;
+    --dark-l-2: #E2E2B6;
     --green: #47BE7D;
     --red: #D9214E;
     --blue: #009EF7;

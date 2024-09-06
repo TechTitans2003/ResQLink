@@ -1,6 +1,6 @@
 nav {
     height: 60px;
-    background-color: var(--lt-color-gray-200);
+    background-color: var(--dark-l-1);
     display: flex;
     justify-content: flex-end;
     align-items: center;
@@ -21,7 +21,7 @@ nav a {
     display: flex;
     align-items: center;
     text-decoration: none;
-    color: var(--text-color);
+    color: var(--light);
     border-bottom: 2px solid transparent;
     transition: all 0.5s ease;
     margin-bottom: 2px;
@@ -29,7 +29,7 @@ nav a {
 
 nav a:hover {
     /* background-color: var(--accent-color); */
-    border-bottom: 2px solid var(--lt-color-gray-900);
+    border-bottom: 2px solid var(--light);
 }
 
 nav .home-link {
