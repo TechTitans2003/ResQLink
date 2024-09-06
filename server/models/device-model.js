@@ -6,16 +6,16 @@ const deviceSchema = mongoose.Schema({
         required: true,
     },
     rssi: {
-        type: Number,
-        default: 0,
+        type: String,
+        default: "rssi",
     },
     latitude: {
-        type: Number,
-        default: 0,
+        type: String,
+        default: "lat",
     },
     longitude: {
-        type: Number,
-        default: 0,
+        type: String,
+        default: "long",
     },
     username: {
         type: String,
@@ -32,7 +32,7 @@ const deviceSchema = mongoose.Schema({
     user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'user'
-    }
+    },
 })
 
 const Device = mongoose.model('device', deviceSchema);

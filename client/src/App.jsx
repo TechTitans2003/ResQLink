@@ -10,6 +10,7 @@ import UserAdmin from './layout/UserAdmin/UserAdmin';
 import Dashboard from './Components/Admin/Dashboard/Dashboard';
 import DeviceDetails from './Components/Admin/DeviceDetails/DeviceDetails';
 import DeviceForm from './Components/Admin/DeviceForm/DeviceForm';
+import Logout from './Components/Admin/Logout/Logout';
 // import NewDevice from './Components/Admin/NewDevice/NewDevice';
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
                             <Admin />
                         </PrivateRoute>
                     } >
+                        <Route path='logout' element={<Logout />} />
                         <Route path='user' element={<UserAdmin />}>
                             <Route path='dashboard' element={<Dashboard />} />
                             <Route path='device-details' element={<DeviceDetails />} >

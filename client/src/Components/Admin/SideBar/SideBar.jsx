@@ -50,7 +50,7 @@ export default function SideBar() {
                         <li><Link to='user/device-details/list/new/Device-Name'>Add Device</Link></li>
                     </SidebarSubmenu>
 
-                    <SidebarSubmenu
+                    {/* <SidebarSubmenu
                         id="forms"
                         title={<i className="ri-clipboard-fill"></i>}
                         activeSubmenu={activeSubmenu}
@@ -95,14 +95,14 @@ export default function SideBar() {
                         <li className="title">Accounts</li>
                         <li><a href="#">User settings</a></li>
                         <li><a href="#">Change password</a></li>
-                    </SidebarSubmenu>
+                    </SidebarSubmenu> */}
 
                     <li className="divider"></li>
                     <li>
                         <a href="#"><i className="ri-settings-5-fill"></i></a>
                     </li>
                     <li>
-                        <a href="#" className="logout"><i className="ri-logout-box-line"></i></a>
+                        <Link to='/admin/logout' className="logout"><i className="ri-logout-box-line"></i></Link>
                     </li>
                 </ul>
             </section>

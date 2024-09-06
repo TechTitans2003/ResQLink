@@ -1,7 +1,7 @@
 import { Outlet } from 'react-router-dom';
 import Insight from '../../Components/Admin/Insight/Insight';
-import './UserAdmin.css';
 import { useAuth } from '../../Utils/auth';
+import './UserAdmin.css';
 
 // Define a mapping for the insight types to icons
 const iconMap = {

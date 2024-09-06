@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../../../Utils/auth';
 
 export default function SignUp() {
 
     const { API, setTokenInLS } = useAuth();
-    const URL = `${API}/api/auth/register`
+    const URL = `${API}/api/auth/register`;
+    const navigate = useNavigate();
 
     const [signUpForm, setSignUpForm] = useState({
         username: '',
@@ -35,6 +37,7 @@ export default function SignUp() {
         });
 
         const resData = await response.json();
+        console.log(resData);
         if (response.ok) {
             setTokenInLS(resData.token);
             navigate('/admin/user/dashboard');
