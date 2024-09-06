@@ -5,7 +5,7 @@ import { useAuth } from '../../../Utils/auth';
 
 export default function DeviceForm() {
     const { condition, deviceName } = useParams();
-    const { API, token } = useAuth();
+    const { API, token, getUserDevice } = useAuth();
     const navigate = useNavigate();
 
     const [isNew, setIsNew] = useState(true);
@@ -76,10 +76,10 @@ export default function DeviceForm() {
         e.preventDefault();
 
         const url = condition === 'new'
-            ? `${API}/api/device/create`
-            : `${API}/api/device/${deviceName}/update`;
+            ? `${API}/api/device/new`
+            : `${API}/api/device/${deviceName}/edit`;
 
-        const method = condition === 'new' ? 'POST' : 'PUT';
+        const method = condition === 'new' ? 'POST' : 'PATCH';
 
         try {
             const response = await fetch(url, {
@@ -107,6 +107,30 @@ export default function DeviceForm() {
         }
     };
 
+    const deleteDevice = async () => {
+        const URL = `${API}/api/device/${deviceName}/delete`;
+        try {
+            const response = await fetch(URL, {
+                method: "DELETE",
+                headers: {
+                    "Authorization": `Bearer ${token}`,
+                }
+            });
+    
+            const resData = await response.json(); // Await the JSON response
+            if (response.ok) {
+                alert(resData.message);
+                navigate('/admin/user/dashboard'); // Navigate to dashboard after deletion
+            } else {
+                alert('Failed to delete device.');
+            }
+        } catch (error) {
+            console.error('Error deleting device:', error);
+            alert('An error occurred while deleting the device.');
+        }
+    };
+    
+
     // Dynamic button rendering based on condition
     const renderButtons = () => {
         if (condition === 'new') {
@@ -115,7 +139,7 @@ export default function DeviceForm() {
             return (
                 <>
                     <button type="submit">Update Info</button>
-                    <button type="button">Delete Device</button>
+                    <button type="button" onClick={deleteDevice}>Delete Device</button>
                 </>
             );
         }
@@ -162,19 +186,20 @@ export default function DeviceForm() {
                             />
                         </div>
                         {
-                            (condition !== 'new')?
-                            <div className="form-group">
-                                <label htmlFor="rssiValue">RSSI Value</label>
-                                <input
-                                    type="text"
-                                    name="rssiValue"
-                                    placeholder="RSSI Value"
-                                    value={formData.rssiValue}
-                                    onChange={handleInputChange}
-                                    required
-                                />
-                            </div>:
-                            <></>
+                            (condition !== 'new') ?
+                                <div className="form-group">
+                                    <label htmlFor="rssiValue">RSSI Value</label>
+                                    <input
+                                        type="text"
+                                        name="rssiValue"
+                                        placeholder="RSSI Value"
+                                        value={formData.rssiValue}
+                                        onChange={handleInputChange}
+                                        required
+                                    />
+                                </div>
+                                :
+                                <></>
                         }
                         <div className="form-group">
                             <label htmlFor="latitude">Latitude</label>

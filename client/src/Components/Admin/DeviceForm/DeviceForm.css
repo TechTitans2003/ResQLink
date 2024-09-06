@@ -53,7 +53,7 @@
 }
 
 .members__form form .form-button button:hover {
-    background-color: var(--dark-green); /* Darker color on hover */
+    background-color: var(--dark); /* Darker color on hover */
 }
 
 /* Adjustments for smaller screens */

@@ -11,11 +11,15 @@ const iconMap = {
 };
 
 const UserAdmin = () => {
-    const { insight } = useAuth();
+    const { insight, devices } = useAuth();
 
     // Ensure insight is available
     const insightKeys = Object.keys(insight);
     const insightValues = Object.values(insight);
+
+    if (!devices) {
+        return <>Loading.....</>
+    }
 
     return (
         <>

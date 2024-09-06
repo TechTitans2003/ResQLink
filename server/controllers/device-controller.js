@@ -57,7 +57,7 @@ const addDevice = async (req, res) => {
 }
 
 // Editing Device Info
-const editDevice = async (req, res) => {
+const editDevice = async (req, res, next) => {
     const editData = req.body;
     const deviceId = req.params.id;
     const userId = req.userId;
@@ -80,7 +80,7 @@ const editDevice = async (req, res) => {
             })
 
     } catch (error) {
-        // console.error(error);
+        console.error(error);
         const err = {
             status: 500,
             message: "Internal Server Error Cannot Update Device Info",

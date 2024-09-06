@@ -3,7 +3,6 @@ import { useAuth } from "../../../Utils/auth"
 
 export default function DeviceList({ name, rssi, id }) {
 
-
     return (
         <>
             <li>
