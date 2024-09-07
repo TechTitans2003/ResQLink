@@ -147,7 +147,7 @@ const getUser = async (req, res) => {
 }
 
 // Getting Single User Device List
-const getDeviceForSingleUser = async (req, res) => {
+const getDeviceForSingleUser = async (req, res, next) => {
     try {
         const id = req.userId;
 

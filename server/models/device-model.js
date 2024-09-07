@@ -29,6 +29,10 @@ const deviceSchema = mongoose.Schema({
         type: String,
         required: true,
     },
+    isActive: {
+        type: Boolean,
+        default: true,
+    },
     user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'user'

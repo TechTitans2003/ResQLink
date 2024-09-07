@@ -15,6 +15,12 @@
     color: var(--light);
 }
 
+#sidebar #sidebar-mobile img {
+    width: 70px;
+    height: auto;
+    filter: invert(1);
+}
+
 .sidebar-overlay {
     position: fixed;
     inset: 0;
@@ -29,6 +35,12 @@
     text-align: center;
     font-size: 2rem;
     color: var(--blue);
+}
+
+.brand img {
+    width: 70px;
+    height: auto;
+    filter: invert(1);
 }
 
 #sidebar .sidebar__menu>li>a {
@@ -235,7 +247,8 @@
 /* Hover label styles */
 .hover-label {
     position: absolute;
-    bottom: -20px;  /* Adjust position below the icon */
+    bottom: -20px;
+    /* Adjust position below the icon */
     left: 50%;
     transform: translateX(-50%);
     white-space: nowrap;

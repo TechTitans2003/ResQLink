@@ -121,9 +121,13 @@ export const AuthProvider = ({ children }) => {
             }));
         }
         // console.log(insight);
-        
+
     }, [devices]);
-    
+
+    useEffect(() => {
+        const interval = setInterval(getUserDevice, 2000);
+        return () => {clearInterval(interval)}
+    }, [])
 
     let isLoggedIn = !!token;
 

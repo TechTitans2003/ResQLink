@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import './Navbar.css';
 
 export default function Navbar() {
@@ -15,11 +16,10 @@ export default function Navbar() {
                         </label>
 
                         {/* <!-- NOT IN TUTORIAL: The <a> tags are linked to the subpages --> */}
-                            <a className="home-link" href="index.html">Home</a>
-                            <a href="about.html">About</a>
-                            <a href="products.html">Products</a>
-                            <a href="blog.html">Blog</a>
-                            <a href="login.html">Login</a>
+                            <Link to='/' className="home-link">ResQLink</Link>
+                            <Link>About</Link>
+                            <Link>Products</Link>
+                            <Link>Login</Link>
 
                     </div>
             </nav>

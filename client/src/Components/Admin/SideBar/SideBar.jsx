@@ -1,7 +1,10 @@
 import React, { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-import './SideBar.css';
 import SidebarSubmenu from '../SideBarSubMenu/SideBarSubMenu';
+
+import logo from '../../../assets/logo.png';
+
+import './SideBar.css';
 
 export default function SideBar() {
     const [activeSubmenu, setActiveSubmenu] = useState(null);
@@ -24,9 +27,11 @@ export default function SideBar() {
             <section id="sidebar" ref={navbarRef}>
                 <section id="sidebar-mobile" onClick={toggleNavbar}>
                     <i className="ri-close-large-line"></i>
+                    {/* <img src={logo} alt="" /> */}
                 </section>
-                <Link to="/" className="brand">
-                    <i className="ri-fire-line"></i>
+                <Link to="user/dashboard" className="brand">
+                    <img src={logo} alt="" />
+                    {/* <i className="ri-fire-line"></i> */}
                 </Link>
 
                 <ul className="sidebar__menu">
@@ -114,8 +119,8 @@ export default function SideBar() {
             <section id="sidebar-mobile" onClick={toggleNavbar}>
                 <i className="ri-menu-2-line toggle-sidebar"></i>
                 <Link to="/" className="brand">
-                    <i className="ri-fire-line"></i>
-                    Adminweb
+                    <img src={logo} alt="" />
+                    ResQLink
                 </Link>
             </section>
             {/* <!-- end: SIDEBAR MOBILE --> */}
