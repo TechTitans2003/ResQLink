@@ -1,6 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
+const path = require('path');
 
 const connectDb = require('./db/db');
 
@@ -15,12 +16,12 @@ const app = express();
 
 
 const corsOptions = {
-    origin: "http://localhost:5173",
+    origin: "http://localhost:4000",
     methods: "GET, POST, PUT, PATCH, DELETE",
     credentials: true,
 }
 
-app.use(cors());
+app.use(cors(corsOptions));
 
 
 app.use(express.json());
@@ -30,13 +31,21 @@ app.use('/api/admin', adminRouter);
 app.use('/api/contact', contactRouter);
 app.use('/api/sensor', sensorRouter);
 
+// Use the client app
+app.use(express.static(path.join(__dirname, '/client/dist')))
+
 app.use(errorMiddleware)
 
-app.get("/", (req, res) => {
+// Render client for any path
+app.get('*', (req, res) => 
+    res.sendFile(path.join(__dirname, '/client/dist/index.html'))
+);
+
+app.get("/api", (req, res) => {
     res.send("Hello, We Welcome You Here");
 })
 
-const port = 5000;
+const port = 4000;
 // const hostname = '127.0.0.1';
 
 connectDb().then(() => {
