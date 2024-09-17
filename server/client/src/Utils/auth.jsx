@@ -4,7 +4,7 @@ export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
 
-    const API = `https://resqlink.onrender.com/`;
+    const API = `https://resqlink.onrender.com`;
 
     // token state variable
     const [token, setToken] = useState(localStorage.getItem('token'));
