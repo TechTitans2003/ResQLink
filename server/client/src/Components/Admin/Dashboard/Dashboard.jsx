@@ -18,8 +18,8 @@ export default function Dashboard() {
                 <ul className="members__user">
                     {
                         devices.map((device,index)=>{
-                            const {name, rssi } = device;
-                            return <DeviceList name={name} rssi={rssi} key={index} />
+                            const {name, rssi, _id } = device;
+                            return <DeviceList name={name} rssi={rssi} key={index} id={_id} />
                         })
                     }
                 </ul>
