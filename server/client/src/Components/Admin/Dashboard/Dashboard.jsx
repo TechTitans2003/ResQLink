@@ -1,6 +1,7 @@
 import { useAuth } from '../../../Utils/auth';
 import AddDevice from '../AddDevice/AddDevice';
 import DeviceList from '../DeviceList/DeviceList';
+import GMap from '../GMap/GMap';
 
 import './Dashboard.css';
 
@@ -10,6 +11,12 @@ export default function Dashboard() {
 
     return (
         <>
+            {/* <div className="members">
+                <div className="members__top">
+                    <h4>Device Location</h4>
+                </div> */}
+                <GMap />
+            {/* </div> */}
             <div className="members">
                 <div className="members__top">
                     <h4>Device List</h4>
@@ -17,8 +24,8 @@ export default function Dashboard() {
                 <AddDevice />
                 <ul className="members__user">
                     {
-                        devices.map((device,index)=>{
-                            const {name, rssi, _id } = device;
+                        devices.map((device, index) => {
+                            const { name, rssi, _id } = device;
                             return <DeviceList name={name} rssi={rssi} key={index} id={_id} />
                         })
                     }
@@ -40,9 +47,9 @@ export default function Dashboard() {
                     </div>
                 </div>
                 <ul className="members__user">
-                {
-                        devices.map((device,index)=>{
-                            const {name, rssi, isActive } = device;
+                    {
+                        devices.map((device, index) => {
+                            const { name, rssi, isActive } = device;
                             if (!isActive) {
                                 return null;
                             }

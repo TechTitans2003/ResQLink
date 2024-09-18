@@ -16,7 +16,8 @@ const app = express();
 
 
 const corsOptions = {
-    origin: "http://localhost:4000",
+    // origin: "http://localhost:4000",
+    origin: "http://localhost:5173", // Local Testing
     methods: "GET, POST, PUT, PATCH, DELETE",
     credentials: true,
 }

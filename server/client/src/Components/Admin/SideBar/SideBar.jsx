@@ -104,7 +104,7 @@ export default function SideBar() {
 
                     <li className="divider"></li>
                     <li>
-                        <a href="#"><i className="ri-settings-5-fill"></i></a>
+                        <Link ><i className="ri-settings-5-fill"></i></Link>
                     </li>
                     <li>
                         <Link to='/admin/logout' className="logout"><i className="ri-logout-box-line"></i></Link>
