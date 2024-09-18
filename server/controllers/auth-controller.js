@@ -1,4 +1,5 @@
 const User = require("../models/user-model");
+// const bcrypt = require('bcrypt');
 
 // Creating New User+
 const createUser = async (req, res, next) => {
@@ -73,23 +74,28 @@ const loginUser = async (req, res) => {
     }
 }
 
-// Updateing User Data
-const updateUser = async (req, res) => {
+
+const updateUser = async (req, res, next) => {
     try {
         const id = req.userId;
         const updateUser = req.body;
 
+        // Check if password needs to be updated
+        // if (updateUser.password) {
+        //     // Hash the new password
+        //     const salt = await bcrypt.genSalt(10);
+        //     updateUser.password = await bcrypt.hash(updateUser.password, salt);
+        // }
 
         // Remove password field if present
         if (updateUser.password) {
             delete updateUser.password;
         }
 
-        // console.log(updateUser);
 
         if (Object.keys(updateUser).length === 0) {
             return res.status(400).json({
-                message: "No data provided for update"
+                message: "No data provided for update",
             });
         }
 
@@ -97,7 +103,7 @@ const updateUser = async (req, res) => {
 
         if (!user) {
             return res.status(404).json({
-                message: "User not found"
+                message: "User not found",
             });
         }
 
@@ -106,16 +112,16 @@ const updateUser = async (req, res) => {
             user,
         });
     } catch (error) {
-        // console.error(error);
         const err = {
             status: 500,
             message: "Internal Server Error Cannot Update User",
-            discription: error,
+            description: error,
         };
 
         next(err);
     }
 }
+
 
 // Getting User Info
 const getUser = async (req, res) => {

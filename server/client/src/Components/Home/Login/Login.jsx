@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { useAuth } from '../../../Utils/auth';
 
 export default function Login() {
@@ -40,6 +41,10 @@ export default function Login() {
             // console.log(resData);
             setTokenInLS(resData.token);
             navigate('/admin/user/dashboard');
+            toast.success(resData.message);
+        }
+        else {
+            toast.error(resData.message);
         }
     };
 
