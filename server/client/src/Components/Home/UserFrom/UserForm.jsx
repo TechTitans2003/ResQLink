@@ -45,8 +45,7 @@ export default function Form() {
                     <div className="content">
                         <h3>New here?</h3>
                         <p>
-                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis,
-                            ex ratione. Aliquid!
+                            We cannot stop  natural disaster but we can arm ourselves with knowledge so many lives wouldn't have to be lost if there was enough preparedness
                         </p>
                         <button className="btn transparent" id="sign-up-btn">
                             Sign up
@@ -58,8 +57,11 @@ export default function Form() {
                     <div className="content">
                         <h3>One of us?</h3>
                         <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum
-                            laboriosam ad deleniti.
+                            आपदा सेवा सदैव सर्वत्र
+                            <br />
+                            As a Helping Hand To NDRF
+                            <br />
+                            Saving Lives and beyond
                         </p>
                         <button className="btn transparent" id="sign-in-btn">
                             Sign in
