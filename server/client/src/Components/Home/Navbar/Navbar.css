@@ -6,6 +6,11 @@ nav {
     align-items: center;
 }
 
+nav .logo {
+    width: 70px;
+    filter: invert(1);
+}
+
 .links-container {
     height: 100%;
     width: 100%;
@@ -76,6 +81,7 @@ nav svg {
     .close-sidebar-button {
         padding: 20px;
         display: block;
+        margin-left: auto;
     }
 
     #sidebar-active:checked~.links-container {

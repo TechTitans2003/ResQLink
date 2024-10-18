@@ -7,8 +7,8 @@ const mapContainerStyle = {
 };
 
 const center = {
-    lat: 24.6192251, // Replace with the person's latitude
-    lng: 73.8548499, // Replace with the person's longitude
+    lat: 26.7884656, // Replace with the person's latitude
+    lng: 75.8343516, // Replace with the person's longitude
 };
 
 const options = {
